@@ -9,7 +9,3 @@ RUN apt-get update && apt-get install -y curl build-essential ca-certificates --
 
 RUN mkdir /app
 WORKDIR /app
-
-COPY package.json .npmrc /app/
-RUN ["npm", "ci"]
-COPY . .
