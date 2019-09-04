@@ -6,3 +6,10 @@ RUN apt-get update && apt-get install -y curl build-essential ca-certificates --
   && echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list \
   && apt-get update && apt-get install -y google-chrome-stable firefox --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir /app
+WORKDIR /app
+
+COPY package.json .npmrc /app/
+RUN ["npm", "ci"]
+COPY . .
