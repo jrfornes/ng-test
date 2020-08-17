@@ -11,9 +11,3 @@ RUN apt-get update && apt-get install -y curl build-essential ca-certificates --
 # Create the working directory
 RUN mkdir /app
 WORKDIR /app
-
-# We keep the copy of the package.json and lock files separated from npm install and
-# source files to avoid unnecessary npm installs
-COPY package.json .npmrc /app/
-RUN ["npm", "i"]
-COPY . .
